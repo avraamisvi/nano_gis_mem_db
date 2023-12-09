@@ -65,14 +65,10 @@ impl Table {
 
     fn is_row_compatible_with_columns(&mut self, values: &Vec<ValueContainer>) -> Result<(), DataTypeIncompatibleWithColumn> {
 
-       // println!("called {}", self.columns.len());
-        
         for idx in 0..self.columns.len() {
             let column = &self.columns[idx];
             let value = &values[idx];
-
-            //println!("c:{}, v:{}", column.data_type, value.data_type);
-
+            
             if value.data_type != column.data_type {
                 return Err(DataTypeIncompatibleWithColumn::new(&column, &value));
              }
