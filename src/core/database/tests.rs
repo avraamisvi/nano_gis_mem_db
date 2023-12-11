@@ -14,3 +14,17 @@ fn when_create_table_command_must_create_new_table() {
 
     assert_eq!(Ok(0), result);
 }
+
+fn when_insert_command_must_insert_data() {
+    
+    let mut database = Database::new();
+    
+    let result = database.execute("
+        CREATE TABLE distributors (
+            id      Int CONSTRAINT no_null NOT NULL,
+            name    String NOT NULL
+        );
+    ");
+
+    assert_eq!(Ok(0), result);
+}
