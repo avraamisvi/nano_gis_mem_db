@@ -6,7 +6,7 @@ use super::row::ValueContainer;
 use std::collections::BTreeMap; 
 
 pub struct Table {
-    name: String,
+    pub name: String,
     columns: Vec<Column>,
     indexes: HashMap<String, BTreeMap<ValueContainer, Row>>,
     rows: Vec<Row>,
@@ -68,7 +68,7 @@ impl Table {
         for idx in 0..self.columns.len() {
             let column = &self.columns[idx];
             let value = &values[idx];
-            
+
             if value.data_type != column.data_type {
                 return Err(DataTypeIncompatibleWithColumn::new(&column, &value));
              }
