@@ -1,4 +1,6 @@
-use sqlparser::ast::{ColumnDef, ObjectName, Ident, Query};
+use std::collections::HashMap;
+
+use sqlparser::ast::{ColumnDef, ObjectName, Ident, Query, Statement};
 
 use super::{database::Database, table::Table, column::Column, data_parser::parse_data_type};
 
@@ -7,6 +9,12 @@ use super::{database::Database, table::Table, column::Column, data_parser::parse
 #[derive(Debug)]
 #[derive(PartialEq)]
 pub struct QueryExecutionError;
+
+// pub struct Executors {
+//     map: HashMap<Statement, Box<dyn QueryExecutor>>
+// }
+
+// impl
 
 pub trait QueryExecutor {
     fn execute(&mut self, database: &mut Database) -> Result<u64, QueryExecutionError>;

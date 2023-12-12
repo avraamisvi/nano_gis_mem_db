@@ -1,18 +1,23 @@
+use std::collections::HashMap;
+
 use sqlparser::ast::Statement;
 use super::executors::{QueryExecutor, CreateTableExecutor, InsertExecutor};
 
-pub fn parse_statement(statement: &Statement) -> impl QueryExecutor{
+pub fn parse_statement(statement: &Statement) -> Box<dyn QueryExecutor> {    
     match statement {
+        Statement::Insert { table_name, 
+            columns, 
+            source, .. } => {
+                Box::new(InsertExecutor::new(table_name.clone(), 
+                                    columns.clone(), 
+                                    source.clone().unwrap()
+                                ))
+        },        
         Statement::CreateTable { 
             name, 
             columns, ..} => {
-                CreateTableExecutor::new(name.clone(), columns.clone())
-            }
-            Statement::Insert { table_name, 
-                                columns, 
-                                source, .. } => {
-                                    InsertExecutor::new(table_name.clone(), columns.clone(), source.unwrap().clone())
-            }
+                Box::new(CreateTableExecutor::new(name.clone(), columns.clone()))
+            },
         _ => unimplemented!()
         // Statement::Analyze { table_name, partitions, for_columns, columns, cache_metadata, noscan, compute_statistics } => todo!(),
         // Statement::Truncate { table_name, partitions, table } => todo!(),
