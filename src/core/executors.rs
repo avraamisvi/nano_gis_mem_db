@@ -72,6 +72,6 @@ impl InsertExecutor {
 
 impl QueryExecutor for InsertExecutor {
     fn execute(&mut self, database: &mut Database) -> Result<u64, QueryExecutionError> {
-        todo!()
+        
     }
 }
