@@ -1,3 +1,5 @@
+use derive_new::new;
+
 use super::column::DataType;
 use core::fmt::Display;
 

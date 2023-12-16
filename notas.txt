@@ -1,0 +1,5 @@
+- Usando o crate https://crates.io/crates/enum_dispatch parece melhorar a performance ao evitar o uso de "dyn", necessario para minha solucao para um codigo com ume melhor estetica
+
+- pensando em criar uma proc macro para abstrair os matchs de conversao, acho q isso deveria ser um RFC ate incorporado na linguagem
+
+- entender melhor o uso de &str

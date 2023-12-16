@@ -2,11 +2,7 @@ use core::fmt::Display;
 
 use super::row::ValueContainer;
 
-#[derive(Ord)]
-#[derive(Eq)]
-#[derive(PartialEq)]
-#[derive(PartialOrd)]
-#[derive(Clone)]
+#[derive(Ord, Clone, Eq, PartialEq, PartialOrd)]
 pub enum DataType {
     INT, 
     STRING

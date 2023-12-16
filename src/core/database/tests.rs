@@ -15,6 +15,7 @@ fn when_create_table_command_must_create_new_table() {
     assert_eq!(Ok(0), result);
 }
 
+#[test]
 fn when_insert_command_must_insert_data() {
     
     let mut database = Database::new();
@@ -24,6 +25,12 @@ fn when_insert_command_must_insert_data() {
             id      Int CONSTRAINT no_null NOT NULL,
             name    String NOT NULL
         );
+    ");
+
+    assert_eq!(Ok(0), result);
+
+    let result = database.execute("
+        INSERT INTO distributors (id,name) values(1, 'test');
     ");
 
     assert_eq!(Ok(0), result);
