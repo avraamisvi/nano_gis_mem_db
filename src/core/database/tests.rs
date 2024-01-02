@@ -30,7 +30,7 @@ fn when_insert_command_must_insert_data() {
     assert_eq!(Ok(0), result);
 
     let result = database.execute("
-        INSERT INTO distributors (id,name) values(1, 'test');
+        INSERT INTO distributors (id, name) values(1, \"test\");
     ");
 
     assert_eq!(Ok(0), result);

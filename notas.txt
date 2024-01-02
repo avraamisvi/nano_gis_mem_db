@@ -3,3 +3,5 @@
 - pensando em criar uma proc macro para abstrair os matchs de conversao, acho q isso deveria ser um RFC ate incorporado na linguagem
 
 - entender melhor o uso de &str
+
+questao sobre enum dispatch ser melhor: https://users.rust-lang.org/t/how-much-slower-is-a-dynamic-dispatch-really/98181
